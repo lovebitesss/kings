@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Express Platinum Card Application</title>
+    <style>
+        /* CSS STYLES */
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #00175a;
+            color: white;
+            padding: 12px 0;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-left img {
+            height: 45px;
+            border-radius: 4px;
+        }
+
+        .platinum-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .eligibility-link {
+            color: #fff;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            display: flex;
+            gap: 60px;
+            padding: 0 20px;
+        }
+
+        /* Left Side: Form */
+        .form-container {
+            flex: 2;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .required-notice {
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .sub-label {
+            display: block;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #747474;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .name-row, .dob-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .flex-1 { flex: 1; }
+
+        /* Sidebar: Benefits */
+        .sidebar {
+            flex: 1;
+            border-left: 1px solid #e0e0e0;
+            padding-left: 40px;
+        }
+
+        .card-preview {
+            width: 240px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            color: #444;
+            text-align: center;
+        }
+
+        /* Footer and T&C */
+        .terms-section {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #555;
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            height: 200px;
+            overflow-y: scroll;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-agree {
+            background-color: #0070d5;
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-agree:hover {
+            background-color: #005bb5;
+        }
+
+        .footer-links {
+            margin-top: 50px;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            font-size: 13px;
+        }
+
+        .footer-links h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #0070d5;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+
+
+
+
+
+
+
+/* Header Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .amex-logo {
+            background: var(blue);
+            color: black;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-size: 15px; /* Increased from 13px */
+            color: var(--amex-blue);
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--amex-blue);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 15px; /* Increased from 13px */
+        }
+
+        .login-btn {
+            background: var(blue);
+            color: white;
+            border: none;
+            padding: 10px 22px; /* Larger button */
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        /* Main Center Container */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header-text {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--text-purple);
+            font-size: 28px; /* Increased from 20px */
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-header {
+            font-size: 16px; /* Increased from 12px */
+            color: #555;
+            margin-top: 10px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<nav>
+    <div class="nav-left">
+        <div class="amex-logo"> 
+            AMERICAN<br>EXPRESS
+        </div>
+        <div class="nav-links">
+            <a href="#">My Account</a>
+            <a href="#">Cards</a>
+            <a href="#">Travel</a>
+            <a href="#">Insurance</a>
+        </div>
+    </div>
+    <div class="nav-right">
+        <i class="fa fa-search"></i>
+        <span style="cursor:pointer">Help</span>
+        <button class="login-btn">Log In</button>
+    </div>
+</nav>
+
+<body>
+
+
+
+
+
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                              <span class="platinum-text">Platinum Card®</span>
+            </div>
+            <a href="#" class="eligibility-link">Important: Please read the eligibility criteria before starting your application</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Please tell us about yourself</h1>
+            <p class="required-notice">All fields are required unless marked as optional.</p>
+
+            <form>
+                <div class="form-group" style="width: 200px;">
+                                   </div>
+
+                <div class="name-row">
+                    <div class="form-group flex-1">
+                        <label>First name</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label>Middle name (optional)</label>
+                        <input type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Last name</label>
+                    <span class="sub-label">Provide name that appears on your official valid document.</span>
+                    <input type="text">
+                </div>
+
+                <div class="form-group">
+                    <label>PAN</label>
+                    <input type="text" placeholder="Enter 10 digit PAN">
+                </div>
+
+
+ 		<div class="form-group">
+                    <label>Date of birth</label>
+                    <input type="text" placeholder="DOB">
+                </div>
+
+
+
+                <div class="form-group">
+                    <label>Aadhaar</label>
+                    <input type="text" placeholder="Enter 12 digit Aadhaar">
+                </div>
+
+                <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
+
+                <h3>Contact Information</h3>
+
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile number</label>
+                    <div style="display: flex; border: 1px solid #747474; border-radius: 4px;">
+                        <span style="padding: 12px; background: #f0f0f0; border-right: 1px solid #ccc;">🇮🇳 + 91</span>
+                        <input type="text" style="border: none; flex: 1; padding: 12px;">
+                    </div>
+                </div>
+
+
+		<div class="form-group">
+                    <label>Address</label>
+                    <input type="text" placeholder="">
+                </div>
+
+		<div class="form-group flex-1">
+                        <label>Pin Code</label>
+                        <input type="text">
+                    </div>
+
+
+
+		<div class="form-group">
+                    <label>City</label>
+                    <input type="text" placeholder="">
+                </div>
+
+
+		<div class="form-group">
+                    <label>State</label>
+                    <input type="text" placeholder="">
+                </div>
+
+
+		<div class="form-group">
+                    <label>Employment status</label>
+                    <input type="text" placeholder="">
+                </div>
+
+
+
+
+
+
+
+                <h3>Terms and Conditions</h3>
+                <div class="terms-section">
+                    The Most Important Terms & Conditions, the Key Fact Statement and agree with the same. I/we authorize AEBC to verify information provided (provided in the application or otherwise by myself/us) in social media such as (but not limited to) LinkedIn, Facebook, and Twitter. I/we authorize American Express Banking Corp. (“AEBC”) to retain my information and contact me about the status of my/our application through email/mobile, even if I am registered with the National Customer Preference Register (NCPR) and opted out of receiving all promotional calls and messages. Notwithstanding the name as mentioned or declared by me on the application form, AEBC shall have the right to update and record the name as it appears on any of the Officially Valid Documents (OVD) documents provided by me and the same shall be used by AEBC for the purposes of verification/credit check/communication/ identification/Account set-up, etc. I agree to have read and abide by and also understand that my personal and sensitive personal information shall be processed by AEBC in accordance with the American Express. I/We hereby agree and give an explicit consent to American Express for electronic Most Important Terms and Conditions (MITC) & Cardmember Agreement (CMA). I hereby give my explicit consent to AEBC for collecting/downloading/processing/ storing, authenticating and verifying the physical / e-copy of the KYC documents/Information (including proof of possession of Aadhaar number) as asked for by AEBC with the relevant authorities and also with/from Central KYC (CKYC) registry basis the information/details provided. In case, the details provided do not match with that of CKYCR registry, I shall provide updated and revised information/details to AEBC. I hereby give an explicit consent to avail the benefits of the complimentary insurance coverage as mentioned in the MITC, if provided with my card.
+                </div>
+
+                <div class="btn-container">
+                    <button type="button" class="btn-agree">Agree and continue</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="sidebar">
+                        <h3 style="text-align: center;">Platinum Card®</h3>
+            
+            <div class="benefit-item">Lodging benefits at 1000+ FINE HOTELS & RESORTS properties worldwide</div>
+            <div class="benefit-item">"Do Anything" Platinum Concierge</div>
+            <div class="benefit-item">Complimentary elite tier memberships</div>
+            <div class="benefit-item">Enjoy 5X Membership Rewards points with Rewards Multiplier</div>
+            <div class="benefit-item" style="color: #0070d5;">📞 1-800-419-2122</div>
+            <div class="benefit-item" style="color: #0070d5; border-bottom: none;">❓ Frequently asked questions</div>
+        </div>
+    </div>
+
+    <div class="container" style="display: block;">
+        <div class="footer-links">
+            <div>
+                <h4>Top Links</h4>
+                <a href="#">View Personal Cards</a>
+                <a href="#">Schedule of Fees</a>
+            </div>
+            <div>
+                <h4>Business Links</h4>
+                <a href="#">View Corporate Cards</a>
+                <a href="#">Know Your Customer</a>
+            </div>
+            <div>
+                <h4>Company Information</h4>
+                <a href="#">Vision and Mission</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div>
+                <h4>Policy and Regulation</h4>
+                <a href="#">Notice Board</a>
+                <a href="#">Card Fraud</a>
+            </div>
+        </div>
+        <p style="font-size: 11px; color: #999; text-align: center;">Copyright © 2023 American Express Company | American Express Banking Corp.</p>
+    </div>
+
+</body>
+</html>
